@@ -1,24 +1,10 @@
 # =============================================================================
-# AWS WorkMail Organization
+# AWS WorkMail Organization — managed via MCP workmail_setup tool
 # =============================================================================
-# WorkMail org created via CLI. Imported into terraform state by previous runs.
-# AWS provider has a tags bug, so we keep the resource but ignore all changes.
+# NOT in terraform due to AWS provider bug with tags on aws_workmail_organization.
+# Use workmail_setup MCP tool for: org creation, user management, aliases.
 #
 # Organization ID: m-cbf793cbcaf946f2a2b39dd6a5d2b765
 # Alias: gevdynamics
 # Webmail: https://gevdynamics.awsapps.com/mail
 # IMAP: imap.mail.us-east-1.awsapps.com:993
-
-provider "aws" {
-  alias  = "no_default_tags"
-  region = "us-east-1"
-}
-
-resource "aws_workmail_organization" "main" {
-  provider           = aws.no_default_tags
-  organization_alias = var.workmail_alias
-
-  lifecycle {
-    ignore_changes = all
-  }
-}
