@@ -9,5 +9,5 @@ import {
 }
 
 resource "aws_workmail_organization" "main" {
-  alias = var.workmail_alias
+  organization_alias = var.workmail_alias
 }
