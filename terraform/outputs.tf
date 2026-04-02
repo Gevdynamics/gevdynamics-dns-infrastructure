@@ -9,8 +9,8 @@ output "name_servers" {
 }
 
 output "workmail_organization_id" {
-  description = "WorkMail organization ID"
-  value       = aws_workmail_organization.main.organization_id
+  description = "WorkMail organization ID (managed outside terraform)"
+  value       = "m-cbf793cbcaf946f2a2b39dd6a5d2b765"
 }
 
 output "webmail_url" {
