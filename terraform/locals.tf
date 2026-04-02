@@ -5,5 +5,3 @@ locals {
     Repository  = "gevdynamics-dns-infrastructure"
   }
 }
-
-# trigger

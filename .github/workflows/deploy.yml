@@ -47,11 +47,6 @@ jobs:
             -backend-config="region=${{ env.AWS_REGION }}" \
             -backend-config="dynamodb_table=${ORG_NAME}-terraform-locks-${{ env.ACCOUNT_ID }}"
 
-      - name: Remove WorkMail from state (one-time cleanup)
-        if: hashFiles('terraform/*.tf') != ''
-        working-directory: terraform
-        run: terraform state rm aws_workmail_organization.main 2>/dev/null || true
-
       - name: Terraform Plan
         if: hashFiles('terraform/*.tf') != ''
         working-directory: terraform
