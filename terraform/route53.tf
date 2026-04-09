@@ -103,3 +103,44 @@ resource "aws_route53_record" "dkim_3" {
   ttl     = 1800
   records = ["e6ywx4odqwspz6yh6dmvukdvjd3bevxh.dkim.amazonses.com"]
 }
+
+# =============================================================================
+# Amplify Hosting — ACM Certificate Validation
+# =============================================================================
+
+resource "aws_route53_record" "amplify_cert_validation" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = "_9b5d922846883c2b484917be6014d5b8"
+  type    = "CNAME"
+  ttl     = 300
+  records = ["_f855c98f9f7253c90b490ee6ce854b51.jkddzztszm.acm-validations.aws."]
+}
+
+# =============================================================================
+# Amplify Hosting — gevdynamics.com (apex domain)
+# ALIAS record to CloudFront distribution (CNAME not allowed on apex)
+# =============================================================================
+
+resource "aws_route53_record" "amplify_apex" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = ""
+  type    = "A"
+
+  alias {
+    name                   = "d398fplstgumie.cloudfront.net"
+    zone_id                = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
+# =============================================================================
+# Amplify Hosting — www.gevdynamics.com
+# =============================================================================
+
+resource "aws_route53_record" "amplify_www" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = "www"
+  type    = "CNAME"
+  ttl     = 300
+  records = ["d398fplstgumie.cloudfront.net"]
+}
