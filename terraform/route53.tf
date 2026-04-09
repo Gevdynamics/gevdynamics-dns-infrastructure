@@ -127,7 +127,7 @@ resource "aws_route53_record" "amplify_apex" {
   type    = "A"
 
   alias {
-    name                   = "d3oz9ge32cpzrg.cloudfront.net"
+    name                   = "d34ud5wdwqp8op.cloudfront.net"
     zone_id                = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
@@ -142,5 +142,5 @@ resource "aws_route53_record" "amplify_www" {
   name    = "www"
   type    = "CNAME"
   ttl     = 300
-  records = ["d3oz9ge32cpzrg.cloudfront.net"]
+  records = ["d34ud5wdwqp8op.cloudfront.net"]
 }
