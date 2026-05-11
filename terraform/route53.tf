@@ -17,30 +17,6 @@
 # }
 
 # =============================================================================
-# MX Record — WorkMail email receiving
-# =============================================================================
-
-# resource "aws_route53_record" "mx" {
-#   zone_id = aws_route53_zone.main.zone_id
-#   name    = ""
-#   type    = "MX"
-#   ttl     = 3600
-#   records = ["10 inbound-smtp.us-east-1.amazonaws.com"]
-# }
-
-# =============================================================================
-# Autodiscover — email client auto-configuration
-# =============================================================================
-
-# resource "aws_route53_record" "autodiscover" {
-#   zone_id = aws_route53_zone.main.zone_id
-#   name    = "autodiscover"
-#   type    = "CNAME"
-#   ttl     = 300
-#   records = ["autodiscover.mail.us-east-1.awsapps.com"]
-# }
-
-# =============================================================================
 # SES Domain Ownership Verification
 # =============================================================================
 
@@ -77,7 +53,7 @@
 # }
 
 # =============================================================================
-# DKIM — cryptographic email signing (3 CNAME records from WorkMail/SES)
+# DKIM — cryptographic email signing (3 CNAME records from SES)
 # =============================================================================
 
 # resource "aws_route53_record" "dkim_1" {
